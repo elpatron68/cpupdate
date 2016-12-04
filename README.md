@@ -30,3 +30,6 @@ Just delete the directory you extracted the installer to (see step 2. above). At
 
 ## Expert usage
 If you have installed Git and 7-Zip on your computer, you can download only the script file `cpupdate_portable.bat`, open it in an editor and set the path to Git and 7-Zip suiting your needs (Lines 19 - 20)
+
+## Anything else?
+If you like this, star it on [GitHub](https://github.com/elpatron68/cpupdate/)!
