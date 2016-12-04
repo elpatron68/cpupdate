@@ -17,7 +17,12 @@ Every Farming Simulator 17 enthusiast should have a look at the famous mod [Cour
 4. Start `cpupdate_portable.bat` for an instant 1-click update.
 
 ![Sceenshot (fresh install)](https://github.com/elpatron68/cpupdate/blob/master/_screenshots/fresh_install.png)
+
+Fresh installation
+
 ![Sceenshot (update)](https://github.com/elpatron68/cpupdate/blob/master/_screenshots/update.png)
+
+Update Installation
 
 ## Expert usage
 If you have installed Git and 7-Zip on your computer, you can download only the script file `cpupdate_portable.bat`, open it in an editor and set the path to Git and 7-Zip suiting your needs (Lines 19 - 20)
