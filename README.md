@@ -12,7 +12,7 @@ Every Farming Simulator 17 enthusiast should have a look at the famous mod Cours
 
 ## How to use?
 1. [Download the newest version of cpupdate](https://github.com/elpatron68/cpupdate/releases).
-2. Start the self-extracting installer archive 'cpupdate_installer.exe' and extract it to a folder of your choice.
+2. Start the self-extracting installer archive 'cpupdate_installer.exe' and extract it to a folder of your choice. **Don´t use your `Program Files` folder because the script has to write some files in it´s installation folder.**
 3. Find `cpupdate_portable.bat` in the folder you extracted in the former step and send a link to your desktop.
 4. Start `cpupdate_portable.bat` for an instant 1-click update.
 
