@@ -23,7 +23,7 @@ Fresh installation
 ![Sceenshot (update)](https://github.com/elpatron68/cpupdate/blob/master/_screenshots/update.png)
 
 ## How to restore an older version?
-With every Courseplay update *cpupdate* creates a zipped backup file of your former version. You can find it under your *cpupdate* directory (see step 2. above) in the folder `cpbackup`. Just extract the content to `<your Farming Simulator mod folder>\ZZZ_Courseplay\`. `<your Farming Simulator mod folder>` is usually under your Documents folder - `my games` - `FarmingSimulator2017`.
+With every Courseplay update *cpupdate* creates a zipped backup file of your former version. You can find it under your *cpupdate* directory (see step 2. above) in the folder `cpbackup`. Just extract the content to `<your Farming Simulator mod folder>\ZZZ_Courseplay\`. `<your Farming Simulator mod folder>` is usually under your Documents folder - `my games` - `FarmingSimulator2017` - `mods`.
 
 ## How get rid of it?
 Just delete the directory you extracted the installer to (see step 2. above). Attention! You will loose your backup files, too.
