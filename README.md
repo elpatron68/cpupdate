@@ -8,7 +8,7 @@ This package contains portable editions of Git and 7-Zip as well as a Batch scri
 * updates your current Courseplay mod folder to the latest version from the Github repository.
 
 ## Who needs this?
-Every Farming Simulator 17 enthusiast should have a look at the famous mod [Courseplay](https://github.com/Courseplay/courseplay). If you are using Courseplay and want to be sure to always use the newest version, you should update your installation before playing, as there are frequent updates. This can be a quite complicated process if you want to be sure to have a backup of former versions.
+Every Farming Simulator 17 enthusiast should have a look at the famous mod [Courseplay](https://github.com/Courseplay/courseplay). If you are using Courseplay and want to be sure to always use the latest version, you should update your installation before playing, as there are frequent updates. This can be a quite complicated process if you want to be sure to have a backup of former versions.
 
 ## How to use?
 1. [Download the latest version of cpupdate](https://github.com/elpatron68/cpupdate/releases).
