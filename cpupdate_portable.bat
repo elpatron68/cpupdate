@@ -101,8 +101,8 @@ if exist "%destination%" (
 
 rem Backup directory
 set "curpath=%cd%"
-set backupdir=%curpath%\cpbackup
-echo Your backup folder is: %backupdir%
+set backupdir=.\cpbackup
+echo Your backup folder is: %curpath%\cpbackup
 
 rem Extract moddesc.xml from ZIPFILE
 if %deployment%=="ZIPFILE" (
@@ -182,12 +182,9 @@ if %freshinstall%=="no" (
 	echo Creating a backup of your current Courseplay...
 	mkdir %backupdir% 2> NUL
 	if %deployment%=="DIRECTORY" (
-		echo backupfile: %backupfile%
-		pause
 		%zipexe% a -r "%backupfile%" "%destination%\*" >NUL 2>&1
-	) else (
-		
-		copy "%destination%" "%backupfile%" > NUL
+	) else (	
+		copy "%destination%" %backupfile% > NUL
 	)
 ) else (
 	echo No former version found - this seems to be a fresh install. Creating new mod directory for Courseplay...
@@ -204,8 +201,7 @@ rem Copy cloned directory to mod folder
 if %deployment%=="DIRECTORY" (
 	echo Copying the update to your mod folder...
 	xcopy  /S /E /H /Y /C /Q ".\courseplay\*.*" "%destination%\" >NUL
-)
-if %deployment%=="ZIPFILE" (
+) else (
 	echo Copying the updated Courseplay directory as ZIP file to your mod folder...
 	%zipexe% a -r -tzip "%destination%" .\courseplay\* >NUL 2>&1
 )
@@ -229,9 +225,17 @@ if "%zipok%"=="-1" (
 goto ende
 
 :ende
-del /q "%TEMP%\getversion.vbs" >NUL
+rem Cleanup
+if exist "%TEMP%\getversion.vbs" (
+	del /q "%TEMP%\getversion.vbs" >NUL
+)
+rem Goodbye
 echo.
-echo Thanks for using me. (Any key to exit)
+echo You should check for an update of cpupdate from time to time:
+echo https://github.com/elpatron68/cpupdate/releases
+echo .
+echo Bye, and thanks for the fish.
 if %autoclose%=="No" (
+	echo ^(Any key to exit^)
 	pause >NUL
 )
