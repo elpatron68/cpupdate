@@ -47,7 +47,7 @@ set zipexe=".\App\7-Zip\7z.exe"
 rem =============================================================================
 rem End of user settings
 setlocal enabledelayedexpansion
-echo Courseplay Beta Updatescript v1.1
+echo Courseplay Beta Updatescript v1.3
 echo (c) 2016 elpatron@mailbox.org
 echo .
 rem git.exe startable?
@@ -108,23 +108,22 @@ rem Extract moddesc.xml from ZIPFILE
 if %deployment%=="ZIPFILE" (
 	if %freshinstall%=="no" (
 		echo Extracting 'moddesc.xml' for version detection...
-		del /q "%TEMP%\moddesc.xml" > NUL
+		del /q "%TEMP%\moddesc.xml" 2>NUL
 		%zipexe% e "%destination%" -o"%TEMP%" moddesc.xml -r -aoa > NUL 2>&1
 	)
 )
 
 rem Get current Courseplay version with vbs script
 if exist .\cpversion.txt (
-	del /q .\cpversion.txt > NUL
+	del /q .\cpversion.txt 2>NUL
 )
 rem ...from directory
 if %deployment%=="DIRECTORY" (
 	if %freshinstall%=="no" (
 		cscript "%TEMP%\getversion.vbs" "%destination%\modDesc.xml" //Nologo >.\cpversion.txt
 	)
-)
+) else (
 rem from zip file
-if %deployment%=="ZIPFILE" (
 	if %freshinstall%=="no" (
 		cscript "%TEMP%\getversion.vbs" "%TEMP%\moddesc.xml" //Nologo >.\cpversion.txt
 	)
@@ -136,13 +135,14 @@ ping 127.0.0.1 -n 2 > nul
 rem Read version from output file
 if exist .\cpversion.txt (
 	set /p version=<.\cpversion.txt
-	del /q .\cpversion.txt" > NUL
+	del /q .\cpversion.txt" 2>NUL
 	set freshinstall="no"
 	) else (
 	set freshinstall="yes"
 	set version="0"
 )
-if not %version%=="0" (
+
+if %freshinstall%=="no" (
 	echo Your currently installed Version is: %version%
 )
 
@@ -159,7 +159,7 @@ cscript "%TEMP%\getversion.vbs" ".\courseplay\modDesc.xml" //Nologo >.\cpversion
 set /p newversion=<.\cpversion.txt
 echo Version from Github: %newversion%
 if exist .\cpversion.txt (
-	del /q .\cpversion.txt > NUL
+	del /q .\cpversion.txt 2>NUL
 )
 
 rem Do we have an update?
@@ -227,7 +227,7 @@ goto ende
 :ende
 rem Cleanup
 if exist "%TEMP%\getversion.vbs" (
-	del /q "%TEMP%\getversion.vbs" >NUL
+	del /q "%TEMP%\getversion.vbs" 2>NUL
 )
 rem Goodbye
 echo.
@@ -235,7 +235,7 @@ echo You should check for an update of cpupdate from time to time:
 echo https://github.com/elpatron68/cpupdate/releases
 echo .
 echo Bye, and thanks for the fish.
-if %autoclose%=="No" (
+if %autoclose%=="NO" (
 	echo ^(Any key to exit^)
 	pause >NUL
 )
