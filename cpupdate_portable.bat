@@ -85,7 +85,7 @@ set _dest=%UserDocs%\my games\FarmingSimulator2017\mods\ZZZ_courseplay
 echo Deployment method is %deployment%.
 if %deployment%=="DIRECTORY" (
 	set destination=%_dest%
-	) else (
+) else (
 	set destination=%_dest%.zip
 )
 echo Your destination is: %destination% 
@@ -137,7 +137,7 @@ if exist .\cpversion.txt (
 	set /p version=<.\cpversion.txt
 	del /q .\cpversion.txt" 2>NUL
 	set freshinstall="no"
-	) else (
+) else (
 	set freshinstall="yes"
 	set version="0"
 )
