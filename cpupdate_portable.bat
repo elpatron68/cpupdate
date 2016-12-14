@@ -100,7 +100,11 @@ SETLOCAL
 for /f %%i in ('cscript .\moddir.vbs "%UserDocs%\My Games\FarmingSimulator2017\gameSettings.xml" //Nologo') do set moddir=%%i
 
 rem Setting Courseplay mod folder or file
-set _dest=%moddir%\ZZZ_courseplay
+if defined moddir (
+	set _dest=%moddir%\ZZZ_courseplay
+	) else (
+	set _dest=%UserDocs%\my games\FarmingSimulator2017\mods\ZZZ_courseplay
+)
 echo Deployment method is %deployment%.
 if %deployment%=="DIRECTORY" (
 	set destination=%_dest%
