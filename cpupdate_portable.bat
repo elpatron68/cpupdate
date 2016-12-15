@@ -37,7 +37,7 @@ rem Otherwise you have to hit a keystroke after the run - which enables you
 rem to see what happened.
 rem
 rem set autoclose="YES"
-set autoclose="NO"
+set autoclose="No"
 rem =============================================================================
 rem You should replace these with the full path to the files if you use this
 rem script without the portable editions of Git and 7-Zip.
@@ -78,10 +78,33 @@ echo.Next
 echo.Set oXml = Nothing
 )
 
+:: Write a VBS file for getting modfolder from gameSettings.xml
+> "%TEMP%\moddir.vbs" (
+echo.Dim oXml: Set oXml = CreateObject^("Microsoft.XMLDOM"^)
+echo.oXml.Load WScript.Arguments.Item^(0^)
+echo.Dim oDoc: Set oDoc = oXml.documentElement
+echo.
+echo.For Each node In oDoc.childNodes
+echo.	If ^(node.nodeName = "modsDirectoryOverride"^) And ^(node.getAttribute^("active"^) = "true"^) Then
+echo.		WScript.Echo node.getAttribute^("directory"^)
+echo.	End If
+echo.Next
+echo.Set oXml = Nothing
+)
+
 rem Setting `Documents` folder
 for /f "skip=2 tokens=2*" %%A in ('reg query "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" /v "Personal"') do set "UserDocs=%%B"
+
+:: Setting Mod directory
+SETLOCAL
+for /f %%i in ('cscript .\moddir.vbs "%UserDocs%\My Games\FarmingSimulator2017\gameSettings.xml" //Nologo') do set moddir=%%i
+
 rem Setting Courseplay mod folder or file
-set _dest=%UserDocs%\my games\FarmingSimulator2017\mods\ZZZ_courseplay
+if defined moddir (
+	set _dest=%moddir%\ZZZ_courseplay
+	) else (
+	set _dest=%UserDocs%\my games\FarmingSimulator2017\mods\ZZZ_courseplay
+)
 echo Deployment method is %deployment%.
 if %deployment%=="DIRECTORY" (
 	set destination=%_dest%
