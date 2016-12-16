@@ -235,7 +235,7 @@ echo You should check for an update of cpupdate from time to time:
 echo https://github.com/elpatron68/cpupdate/releases
 echo .
 echo Bye, and thanks for the fish.
-if %autoclose%=="No" (
+if %autoclose%=="NO" (
 	echo ^(Any key to exit^)
 	pause >NUL
 )
