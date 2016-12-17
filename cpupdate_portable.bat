@@ -139,8 +139,9 @@ if %deployment%=="ZIPFILE" (
 
 rem Get current Courseplay version with vbs script
 if exist .\cpversion.txt (
-	del /q .\cpversion.txt 2>NUL
+	del /q .\cpversion.txt 1,2>NUL
 )
+
 rem ...from directory
 if %deployment%=="DIRECTORY" (
 	if %freshinstall%=="no" (
@@ -159,15 +160,15 @@ ping 127.0.0.1 -n 2 > nul
 rem Read version from output file
 if exist .\cpversion.txt (
 	set /p version=<.\cpversion.txt
-	del /q .\cpversion.txt" 2>NUL
 	set freshinstall="no"
+	del /q .\cpversion.txt 1,2>NUL
 ) else (
 	set freshinstall="yes"
 	set version="0"
 )
 
 if %freshinstall%=="no" (
-	echo Your currently installed Version is: %version%
+	echo [42mYour currently installed Version is: %version%[0m
 )
 
 rem Delete old checkout
@@ -181,14 +182,14 @@ echo Cloning Courseplay repository from Github...
 rem Get new Courseplay version
 cscript "%TEMP%\getversion.vbs" ".\courseplay\modDesc.xml" //Nologo >.\cpversion.txt
 set /p newversion=<.\cpversion.txt
-echo Version from Github: %newversion%
+echo [44mVersion from Github: %newversion%[0m
 if exist .\cpversion.txt (
-	del /q .\cpversion.txt 2>NUL
+	del /q .\cpversion.txt 1,2>NUL
 )
 
 rem Do we have an update?
 if "%newversion%"=="%version%" (
-	echo No update found, exiting.
+	echo [103mNo update found, exiting.[0m
 	rd /s/q .\courseplay 2> NUL
 	goto ende
 	) else (
@@ -233,7 +234,7 @@ if %deployment%=="DIRECTORY" (
 rem  Delete Git clone directory
 echo Deleting temporary folder...
 rd /s/q .\courseplay 2> NUL
-echo Sucessfully updated from %version% to %newversion%.
+echo [102mSucessfully updated from %version% to %newversion%.[0m
 	
 goto ende
 
@@ -253,6 +254,10 @@ rem Cleanup
 if exist "%TEMP%\getversion.vbs" (
 	del /q "%TEMP%\getversion.vbs" 2>NUL
 )
+if exist "%TEMP%\moddir.vbs" (
+	del /q "%TEMP%\moddir.vbs" 2>NUL
+)
+
 rem Goodbye
 echo.
 echo You should check for an update of cpupdate from time to time:
