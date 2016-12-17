@@ -47,7 +47,21 @@ set zipexe=".\App\7-Zip\7z.exe"
 rem =============================================================================
 rem End of user settings
 setlocal enabledelayedexpansion
-echo Courseplay Beta Updatescript v1.3
+
+rem Colored text only Win10+
+for /f "tokens=2 delims=[]" %%x in ('ver') do set WINVER=%%x
+set WINVER=%WINVER:Version =%
+if "%WINVER:~0,3%"=="10." (
+	set colored=1
+) else (
+	set colored=0
+)
+
+if %colored% == 1 (
+	echo [97mCourseplay Beta Updatescript v1.4[0m
+) else (
+	echo Courseplay Beta Updatescript v1.4
+)
 echo (c) 2016 elpatron@mailbox.org
 echo .
 rem git.exe startable?
@@ -63,15 +77,6 @@ if "%zipok%"=="-1" goto gitzipfehler
 
 echo Git and 7-Zip are ok, lets move on...
 echo.
-
-rem Colored text only Win10+
-for /f "tokens=2 delims=[]" %%x in ('ver') do set WINVER=%%x
-set WINVER=%WINVER:Version =%
-if "%WINVER:~0,3%"=="10." (
-	set colored=1
-) else (
-	set colored=0
-)
 
 rem Write a VBS file for getting Courseplay version from moddesc.xml
 > "%TEMP%\getversion.vbs" (
