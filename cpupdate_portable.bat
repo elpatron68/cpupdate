@@ -97,11 +97,11 @@ for /f "skip=2 tokens=2*" %%A in ('reg query "HKEY_CURRENT_USER\Software\Microso
 
 :: Setting Mod directory
 SETLOCAL
-for /f "delims=" %%i in ('cscript %TEMP%\moddir.vbs "%UserDocs%\My Games\FarmingSimulator2017\gameSettings.xml" //Nologo') do set "moddir=%%i"
+for /f "delims=" %%i in ('cscript %TEMP%\moddir.vbs "%UserDocs%\My Games\FarmingSimulator2017\gameSettings.xml" //Nologo') do set moddir=%%i
 
 rem Setting Courseplay mod folder or file
 if defined moddir (
-	set _dest="%moddir%"\ZZZ_courseplay
+	set _dest=%moddir%\ZZZ_courseplay
 	) else (
 	set _dest=%UserDocs%\my games\FarmingSimulator2017\mods\ZZZ_courseplay
 )
