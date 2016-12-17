@@ -64,6 +64,15 @@ if "%zipok%"=="-1" goto gitzipfehler
 echo Git and 7-Zip are ok, lets move on...
 echo.
 
+rem Colored text only Win10+
+for /f "tokens=2 delims=[]" %%x in ('ver') do set WINVER=%%x
+set WINVER=%WINVER:Version =%
+if "%WINVER:~0,3%"=="10." (
+	set colored=1
+) else (
+	set colored=0
+)
+
 rem Write a VBS file for getting Courseplay version from moddesc.xml
 > "%TEMP%\getversion.vbs" (
 echo.Dim oXml: Set oXml = CreateObject^("Microsoft.XMLDOM"^)
@@ -168,7 +177,11 @@ if exist .\cpversion.txt (
 )
 
 if %freshinstall%=="no" (
-	echo [42mYour currently installed Version is: %version%[0m
+	if %colored% == 1 (
+		echo [42mYour currently installed Version is: %version%[0m
+	) else (
+	echo Your currently installed Version is: %version%
+	)
 )
 
 rem Delete old checkout
@@ -182,14 +195,23 @@ echo Cloning Courseplay repository from Github...
 rem Get new Courseplay version
 cscript "%TEMP%\getversion.vbs" ".\courseplay\modDesc.xml" //Nologo >.\cpversion.txt
 set /p newversion=<.\cpversion.txt
-echo [44mVersion from Github: %newversion%[0m
+if %colored% == 1 (
+	echo [44mVersion from Github: %newversion%[0m
+) else (
+	echo Version from Github: %newversion%
+)
+
 if exist .\cpversion.txt (
 	del /q .\cpversion.txt 1,2>NUL
 )
 
 rem Do we have an update?
 if "%newversion%"=="%version%" (
-	echo [103mNo update found, exiting.[0m
+	if %colored% == 1 (
+		echo [103mNo update found, exiting.[0m
+	) else (
+		echo No update found, exiting.
+	)
 	rd /s/q .\courseplay 2> NUL
 	goto ende
 	) else (
@@ -234,8 +256,11 @@ if %deployment%=="DIRECTORY" (
 rem  Delete Git clone directory
 echo Deleting temporary folder...
 rd /s/q .\courseplay 2> NUL
-echo [102mSucessfully updated from %version% to %newversion%.[0m
-	
+if %colored% == 1 (
+	echo [102mSucessfully updated from %version% to %newversion%.[0m
+) else (
+	echo Sucessfully updated from %version% to %newversion%.
+)
 goto ende
 
 :gitzipfehler
