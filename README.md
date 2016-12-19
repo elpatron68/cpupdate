@@ -42,6 +42,7 @@ Version 1.4 (16.12.2016)
  * Bugix: "Hit any key to close window"
  * Support for custom mod folder (from gamesettings.xml)
  * Colored text (Win10 only)
+ 
 Version 1.1 (5.12.2016)
 * Now capable of creating a zipped file in your mod directory
 
