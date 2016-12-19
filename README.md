@@ -39,7 +39,7 @@ In lines 39 - 40 you can toggle between "auto-close-behaviour" and "hit-a-key-be
 
 ## What´s fresh?
 Version 1.4 (16.12.2016)
- * Bugix: "Hit any key to close window"
+ * Bugfix: "Hit any key to close window"
  * Support for custom mod folder (from gamesettings.xml)
  * Colored text (Win10 only)
  
