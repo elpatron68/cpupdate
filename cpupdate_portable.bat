@@ -292,7 +292,7 @@ rem Goodbye
 echo.
 echo You should check for an update of cpupdate from time to time:
 echo https://github.com/elpatron68/cpupdate/releases
-echo .
+echo.
 echo Bye, and thanks for the fish.
 if %autoclose%=="NO" (
 	echo ^(Any key to exit^)
