@@ -31,13 +31,18 @@ With every Courseplay update *cpupdate* creates a backup of your former version.
 Just delete the directory you extracted the installer to (see step 2. above). Attention! You will loose your backup files, too.
 
 ## Expert usage
-If you have installed Git and 7-Zip on your computer, you can download only the script file `cpupdate_portable.bat`, open it in an editor and set the path to Git and 7-Zip suiting your needs (Lines 45 - 46)
+If you have installed Git and 7-Zip on your computer, you can download only the script file `cpupdate_portable.bat`, open it in an text editor and set the path to Git and 7-Zip suiting your needs (Lines 45 - 46)
 
 You can also set the default deployment mode from `ZIPFILE` to `DIRECTORY` if you like (Line 32 - 33).
 
 In lines 39 - 40 you can toggle between "auto-close-behaviour" and "hit-a-key-before-closing-the-window-because-i-want-to-see-what-happened-mode".
 
 ## What´s fresh?
+Version 1.4 (16.12.2016)
+ * Bugfix: "Hit any key to close window"
+ * Support for custom mod folder (from gamesettings.xml)
+ * Colored text (Win10 only)
+ 
 Version 1.1 (5.12.2016)
 * Now capable of creating a zipped file in your mod directory
 
