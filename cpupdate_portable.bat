@@ -22,7 +22,12 @@ rem Backups will be stored as ZIP files in the subfolder .\cpbackup
 rem
 rem Have a look at the settings described below!
 rem
+rem Get updates of this script only from 
+rem https://github.com/elpatron68/cpupdate/releases
+rem
 rem Have fun!
+rem =============================================================================
+rem U S E R  S E T T I N G S
 rem =============================================================================
 rem Set deployment mode:
 rem    * "ZIPFILE" creates a ZZZ_Courseplay.zip file in your mod directory
@@ -45,7 +50,16 @@ rem
 set gitexe=".\cmd\git.exe"
 set zipexe=".\App\7-Zip\7z.exe"
 rem =============================================================================
-rem End of user settings
+rem End of  U S E R  S E T T I N G S
+rem =============================================================================
+rem
+rem =============================================================================
+rem References:
+rem
+rem Colors: https://stackoverflow.com/questions/2048509/how-to-echo-with-different-colors-in-the-windows-command-line
+rem Lots of other code stolen from https://stackoverflow.com and other
+rem helpful sites.
+rem =============================================================================
 setlocal enabledelayedexpansion
 
 rem Colored text only Win10+
@@ -57,6 +71,7 @@ if "%WINVER:~0,3%"=="10." (
 	set colored=0
 )
 
+rem Title
 if %colored% == 1 (
 	echo [97mCourseplay Beta Updatescript v1.4[0m
 ) else (
@@ -64,6 +79,7 @@ if %colored% == 1 (
 )
 echo (c) 2016 elpatron@mailbox.org
 echo .
+
 rem git.exe startable?
 echo Checking for Git...
 %gitexe% --version > NUL
@@ -92,7 +108,7 @@ echo.Next
 echo.Set oXml = Nothing
 )
 
-:: Write a VBS file for getting modfolder from gameSettings.xml
+rem Write a VBS file for getting modfolder from gameSettings.xml
 > "%TEMP%\moddir.vbs" (
 echo.Dim oXml: Set oXml = CreateObject^("Microsoft.XMLDOM"^)
 echo.oXml.Load WScript.Arguments.Item^(0^)
@@ -197,7 +213,11 @@ rem Git clone
 echo Cloning Courseplay repository from Github...
 %gitexe% clone --depth=1 -q https://github.com/Courseplay/courseplay.git
 
-rem Get new Courseplay version
+rem Delete .git folder
+echo Deleting git files
+rd /s/q .\courseplay\.git 2> NUL
+
+rem Get new Courseplay version information
 cscript "%TEMP%\getversion.vbs" ".\courseplay\modDesc.xml" //Nologo >.\cpversion.txt
 set /p newversion=<.\cpversion.txt
 if %colored% == 1 (
