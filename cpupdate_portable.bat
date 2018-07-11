@@ -213,9 +213,15 @@ rem Git clone
 echo Cloning Courseplay repository from Github...
 %gitexe% clone --depth=1 -q https://github.com/Courseplay/courseplay.git
 
-rem Delete .git folder
+rem Delete .git folder and other files not needed
 echo Deleting git files
 rd /s/q .\courseplay\.git 2> NUL
+del .\courseplay\.editorconfig /s >NUL 2>&1
+del .\courseplay\.gitattributes /s >NUL 2>&1
+del .\courseplay\.gitignore  >NUL 2>&1
+del .\courseplay\course-generator\LICENSE  >NUL 2>&1
+del .\courseplay\__Attributions.md /s  >NUL 2>&1
+del .\courseplay\readme.* /s >NUL 2>&1
 
 rem Get new Courseplay version information
 cscript "%TEMP%\getversion.vbs" ".\courseplay\modDesc.xml" //Nologo >.\cpversion.txt
