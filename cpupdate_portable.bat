@@ -1,5 +1,5 @@
 @echo off
-rem (c) 2016 M. Busche, elpatron@mailbox.org
+rem (c) 2016-2018 M. Busche, elpatron@mailbox.org
 rem
 rem 
 rem                                      _       _       
@@ -73,11 +73,11 @@ if "%WINVER:~0,3%"=="10." (
 
 rem Title
 if %colored% == 1 (
-	echo [97mCourseplay Beta Updatescript v1.4[0m
+	echo [97mCourseplay Beta Updatescript v1.5[0m
 ) else (
-	echo Courseplay Beta Updatescript v1.4
+	echo Courseplay Beta Updatescript v1.5
 )
-echo (c) 2016 elpatron@mailbox.org
+echo (c) 2016-2018 elpatron@mailbox.org
 echo .
 
 rem git.exe startable?
