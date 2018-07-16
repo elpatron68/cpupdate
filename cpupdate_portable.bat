@@ -211,7 +211,7 @@ rd /s/q .\courseplay 2> NUL
 
 rem Git clone
 echo Cloning Courseplay repository from Github...
-%gitexe% clone --depth=1 -q https://github.com/Courseplay/courseplay.git
+%gitexe% clone --depth 1 -q https://github.com/Courseplay/courseplay.git
 
 rem Delete .git folder and other files not needed
 echo Deleting git files
