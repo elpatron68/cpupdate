@@ -1,4 +1,4 @@
-![Github Releases](https://img.shields.io/github/downloads/atom/atom/latest/total.svg)
+![Github Releases (by Release)](https://img.shields.io/github/downloads/atom/atom/v0.190.0/total.svg)
 
 # cpupdate - Portable Courseplay Update Package
 
