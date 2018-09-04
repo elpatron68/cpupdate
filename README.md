@@ -1,3 +1,5 @@
+![Github Releases](https://img.shields.io/github/downloads/atom/atom/latest/total.svg)
+
 # cpupdate - Portable Courseplay Update Package
 
 ## What does it do?
