@@ -1,5 +1,3 @@
-![Github Releases (by Release)](https://img.shields.io/github/downloads/atom/atom/v0.190.0/total.svg)
-
 # cpupdate - Portable Courseplay Update Package
 
 ## What does it do?
