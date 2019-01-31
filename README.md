@@ -38,6 +38,8 @@ You can also set the default deployment mode from `ZIPFILE` to `DIRECTORY` if yo
 In lines 39 - 40 you can toggle between "auto-close-behaviour" and "hit-a-key-before-closing-the-window-because-i-want-to-see-what-happened-mode".
 
 ## What´s fresh?
+Version 1.5 (31.1.2019)
+  * Farming Simulator version 2017 or 2019 (default) - edit `cpupdate_portable.bat` and find `set fsversion`
 Version 1.4 (16.12.2016)
  * Bugfix: "Hit any key to close window"
  * Support for custom mod folder (from gamesettings.xml)
