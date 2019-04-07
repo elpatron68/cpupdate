@@ -51,8 +51,8 @@ rem ============================================================================
 rem You should replace these with the full path to the files if you use this
 rem script without the portable editions of Git and 7-Zip.
 rem
-set gitexe=".\cmd\git.exe"
-set zipexe=".\App\7-Zip\7z.exe"
+set gitexe=.\cmd\git.exe
+set zipexe=.\App\7-Zip\7z.exe
 rem =============================================================================
 rem End of  U S E R  S E T T I N G S
 rem =============================================================================
@@ -217,6 +217,13 @@ rem Git clone
 echo Cloning Courseplay repository from Github...
 %gitexe% clone --depth 1 -q https://github.com/Courseplay/courseplay.git
 
+rem Get last commit messages from git log
+cd .\courseplay\
+set tmpgit=..\%gitexe%
+%tmpgit% log -1 > lastcommitmessage.txt
+move lastcommitmessage.txt ..
+cd ..
+
 rem Delete .git folder and other files not needed
 echo Deleting git files
 rd /s/q .\courseplay\.git 2> NUL
@@ -319,6 +326,12 @@ if exist "%TEMP%\moddir.vbs" (
 )
 
 rem Goodbye
+echo.
+echo Last commit messages from Courseplay:
+echo ================================================================================
+type lastcommitmessage.txt
+echo ================================================================================
+del lastcommitmessage.txt >NUL
 echo.
 echo You should check for an update of cpupdate from time to time:
 echo https://github.com/elpatron68/cpupdate/releases
