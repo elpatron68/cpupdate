@@ -1,5 +1,7 @@
 # cpupdate - Portable Courseplay Update Package
 
+![For Farming Simulator 19](https://img.shields.io/badge/Farming%20Simulator-19-FF7C00.svg)
+
 ## What does it do?
 This package contains portable editions of Git and 7-Zip as well as a Batch script that
 * checks Coursplay´s Github repository for the latest version,
