@@ -2,6 +2,8 @@
 
 ![For Farming Simulator 19](https://img.shields.io/badge/Farming%20Simulator-19-FF7C00.svg)
 
+**A script for Farming Simulator 22 can be found [here](https://gist.github.com/elpatron68/45780b2ebee88f887d7f3464004d4dc3)!**
+
 ## What does it do?
 This package contains portable editions of Git and 7-Zip as well as a Batch script that
 * checks Coursplay´s Github repository for the latest version,
